@@ -1,0 +1,13 @@
+<button (click)="login()">Login to Spotify</button>
+<div *ngIf="authenticated">
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Enter song name">
+    <button (click)="search()">Search</button>
+
+    <div *ngIf="topTrack">
+        <img [src]="topTrack.album.images[0]?.url" alt="Album Cover">
+        <h3>{{ topTrack.name }}</h3>
+        <p>{{ topTrack.artists[0].name }}</p>
+        <!--<button (click)="play(track)">Play</button>-->
+    </div>
+</div>
+
