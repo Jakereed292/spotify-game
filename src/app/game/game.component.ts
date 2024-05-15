@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import { SpotifyService } from '../spotify.service';
-//import { SpotifyPlayerService } from '../spotifyplayer.service';
-//private spotifyPlayerService: SpotifyPlayerService
 
 @Component({
   selector: 'app-game',
@@ -15,12 +13,14 @@ export class GameComponent implements OnInit {
   searchResults: any[] = [];
   topTrack: any;
 
-  constructor(private authService: AuthService, private spotifyService: SpotifyService) {}
+  constructor(private authService: AuthService, 
+              private spotifyService: SpotifyService) {}
 
   ngOnInit(): void {
+    this.authService.handleAuthCallback();
   }
 
-
+  /*
   login() {
     this.authService.getToken().subscribe(
       (response: any) => {
@@ -32,6 +32,11 @@ export class GameComponent implements OnInit {
         console.error('Authentication failed:', error);
       }
     );
+  }
+  */
+
+  login() {
+    this.authService.login();
   }
 
   search() {
@@ -47,6 +52,6 @@ export class GameComponent implements OnInit {
   }
 
   play(track: any) {
-    //this.spotifyPlayerService.play(track.uri);
+    this.spotifyService.playTrack(track.uri);
   }
 }
