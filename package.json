@@ -20,7 +20,9 @@
     "@angular/router": "^14.1.0",
     "file-saver": "^2.0.5",
     "fs": "^0.0.1-security",
+    "@auth0/angular-jwt": "^5.2.0",
     "rxjs": "~7.5.0",
+    "spotify-web-api-js": "^1.5.2",
     "tslib": "^2.3.0",
     "whatwg-fetch": "^3.6.2",
     "zone.js": "~0.11.4"
@@ -32,12 +34,13 @@
     "@types/file-saver": "^2.0.7",
     "@types/jasmine": "~4.0.0",
     "@types/lodash": "^4.14.191",
+    "@types/spotify-web-playback-sdk": "^0.1.19",
     "jasmine-core": "~4.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~4.7.2"
+    "typescript": "^4.8.4"
   }
 }
