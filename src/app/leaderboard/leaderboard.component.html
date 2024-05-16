@@ -1,0 +1,32 @@
+<p>Genre</p>
+<select [(ngModel)]="selectedgenre" (change)="displayResults()">
+    <option  value="Hip Hop" selected>Hip Hop</option>
+    <option  value="Country">Country</option>
+    <option  value="EDM">EDM</option>
+
+</select>
+{{selectedgenre}}
+<br>
+<p>Questions</p>
+<select [(ngModel)]="selectedquestion" (change)="displayResults()">
+    <option  [ngValue]="5" selected>5</option>
+    <option  [ngValue]="10">10</option>
+    <option  [ngValue]="15">15</option>
+
+</select>
+<p>{{selectedquestion}}</p>
+<br>
+<table>
+<tr>
+    <th>Place</th>
+    <th>Name</th>
+    <th>Score</th>
+    <th>Genre</th>
+</tr>
+<tr *ngFor = "let result of resultarray; index as i">
+    <td>{{i+1}}</td>
+    <td>{{result.name}}</td>
+    <td>{{result.score}}</td>
+    <td>{{result.genre}}</td>
+</tr>
+</table>
