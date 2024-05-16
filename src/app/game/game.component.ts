@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import { SpotifyService } from '../spotify.service';
+import { Config } from '../config';
 
 @Component({
   selector: 'app-game',
@@ -22,6 +23,8 @@ export class GameComponent implements OnInit {
   guessGraded: boolean = false;
   songNum: number = 0;
   userScore: number = 0;
+  quizCompleted: boolean = false;
+  currentUser!: Config;
 
   constructor(private authService: AuthService, 
               private spotifyService: SpotifyService) {}
@@ -37,6 +40,12 @@ export class GameComponent implements OnInit {
         const token = response.access_token;
         localStorage.setItem('access_token', token);
         this.authenticated = true;
+
+        this.currentUser = JSON.parse(localStorage.getItem('user') as string);
+
+        this.genreQuery = this.currentUser.genre;
+        this.quizSize = this.currentUser.questions;
+        console.log(this.genreQuery);
       },
       (error) => {
         console.error('Authentication failed:', error);
@@ -62,7 +71,7 @@ export class GameComponent implements OnInit {
       (response: any) => {
         this.tracks = response.items;
         this.tracks = this.tracks.map((song: { track: any; }) => song.track);
-        this.getRandomTracks(this.quizSize);
+        this.getRandomTracks();
       },
       (error) => {
         console.log(error)
@@ -70,14 +79,14 @@ export class GameComponent implements OnInit {
     )
   }
 
-  getRandomTracks(quizSize: number) {
+  getRandomTracks() {
     let i = 0;
     let numsChosen: number[] = [];
     let songChoice;
 
     this.quizTracks = [];
 
-    while(i < quizSize) {
+    while(i < this.quizSize) {
       songChoice = Math.floor(Math.random() * this.tracks.length + 1);
 
       while(numsChosen.includes(songChoice) || this.tracks[songChoice] === undefined || this.tracks[songChoice].preview_url === undefined || this.tracks[songChoice].preview_url === null) {
@@ -92,9 +101,9 @@ export class GameComponent implements OnInit {
 
     console.log(this.quizTracks);
 
-    if (this.quizTracks.length !== quizSize) {
+    if (this.quizTracks.length !== this.quizSize) {
       this.quizTracks = [];
-      this.getRandomTracks(quizSize);
+      this.getRandomTracks();
     }
   }
 
@@ -137,5 +146,11 @@ export class GameComponent implements OnInit {
     this.guessGraded = false;
     this.correctGuess = false;
     this.userGuess = "";
+
+    if (this.songNum === this.quizTracks.length) {
+      this.quizCompleted = true;
+      this.currentUser.score = this.userScore;
+
+    }
   }
 }

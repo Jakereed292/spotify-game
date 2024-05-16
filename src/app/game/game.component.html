@@ -1,8 +1,5 @@
-<!--<button (click)="login()">Login to Spotify</button>-->
 <div *ngIf="authenticated">
-    <input type="text" [(ngModel)]="genreQuery" placeholder="Enter genre">
-    <input type="number" [(ngModel)]="quizSize" placeholder="Enter quiz size">
-    <button (click)="searchGenre()">Search</button>
+    <button (click)="searchGenre()">Start Quiz</button>
 
     <div *ngIf="quizTracks.length > 0">
         <div *ngIf="songNum >= 0 && songNum < quizTracks.length">

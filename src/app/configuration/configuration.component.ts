@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Config } from '../config';
-import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-configuration',

@@ -12,7 +12,11 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 //const routes: Routes = [{ path: "", component: HomeComponent }];
-const routes: Routes = [{ path: "", component: ConfigurationComponent }];
+const routes: Routes = [
+  { path: "", component: ConfigurationComponent },
+  { path: "game", component: GameComponent},
+  { path: "leaderboard", component: LeaderboardComponent}
+];
 //const routes: Routes = [{ path: "", component: LeaderboardComponent }];
 
 @NgModule({
