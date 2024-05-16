@@ -1,16 +1,15 @@
 <button (click)="login()">Login to Spotify</button>
 <div *ngIf="authenticated">
-    <input type="text" [(ngModel)]="searchQuery" placeholder="Enter song name">
-    <button (click)="search()">Search</button>
+    <input type="text" [(ngModel)]="genreQuery" placeholder="Enter genre">
+    <input type="number" [(ngModel)]="quizSize" placeholder="Enter quiz size">
+    <button (click)="searchGenre()">Search</button>
 
-    <div *ngIf="topTrack">
-        <img [src]="topTrack.album.images[0]?.url" alt="Album Cover">
-        <h3>{{ topTrack.name }}</h3>
-        <p>{{ topTrack.artists[0].name }}</p>
-        <!--<h1>{{topTrack.preview_url}}</h1>-->
-        <audio controls>
-            <source [src]="topTrack.preview_url">
-        </audio>
+    <div *ngIf="quizTracks.length > 0">
+        <div *ngFor="let song of quizTracks">
+            <h3>{{song.name}}</h3>
+            <h5>{{song.artists[0].name}}</h5>
+            <audio controls [src]="song.preview_url"></audio>
+        </div>
     </div>
 </div>
 

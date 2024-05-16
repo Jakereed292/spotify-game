@@ -9,9 +9,14 @@ import { SpotifyService } from '../spotify.service';
 })
 export class GameComponent implements OnInit {
   authenticated = false;
-  searchQuery: string = '';
   searchResults: any[] = [];
-  topTrack: any;
+  genreResults: any[] = [];
+  genreQuery: string = '';
+  playlist: any;
+  tracks: any[] = [];
+  numOfTracks: number = 0;
+  quizSize: number = 0;
+  quizTracks: any[] = [];
 
   constructor(private authService: AuthService, 
               private spotifyService: SpotifyService) {}
@@ -34,12 +39,12 @@ export class GameComponent implements OnInit {
     );
   }
 
-  search() {
-    this.spotifyService.searchSongs(this.searchQuery).subscribe(
+  searchGenre() {
+    this.spotifyService.getSongsByGenre(this.genreQuery).subscribe(
       (response: any) => {
-        this.searchResults = response.tracks.items;
-        this.topTrack = response.tracks.items[0];
-        console.log(JSON.stringify(this.topTrack));
+        this.genreResults = response.playlists.items;
+        this.playlist = this.genreResults[0];
+        this.getTracksFromPlaylist();
       },
       (error) => {
         console.error('Search failed:', error);
@@ -47,4 +52,40 @@ export class GameComponent implements OnInit {
     );
   }
 
+  getTracksFromPlaylist() {
+    this.spotifyService.getTracks(this.playlist.tracks.href).subscribe(
+      (response: any) => {
+        this.tracks = response.items;
+        this.tracks = this.tracks.map((song: { track: any; }) => song.track);
+        console.log(this.tracks);
+        this.getRandomTracks(this.quizSize);
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  }
+
+  getRandomTracks(quizSize: number) {
+    let i = 0;
+    let numsChosen: number[] = [];
+    let songChoice;
+
+    this.quizTracks = [];
+
+    while(i < quizSize) {
+      songChoice = Math.floor(Math.random() * this.tracks.length + 1);
+      console.log(songChoice);
+
+      while(numsChosen.includes(songChoice) && this.tracks[songChoice].preview_url === null) {
+        songChoice =  Math.floor(Math.random() * this.tracks.length + 1);
+      }
+
+      this.quizTracks.push(this.tracks[songChoice]);
+      numsChosen.push(songChoice);
+      i++;
+    }
+
+    console.log(this.quizTracks);
+  }
 }
