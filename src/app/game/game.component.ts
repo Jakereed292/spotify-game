@@ -17,6 +17,9 @@ export class GameComponent implements OnInit {
   numOfTracks: number = 0;
   quizSize: number = 0;
   quizTracks: any[] = [];
+  userGuess: string = '';
+  correctGuess: boolean = false;
+  guessGraded: boolean = false;
 
   constructor(private authService: AuthService, 
               private spotifyService: SpotifyService) {}
@@ -75,9 +78,8 @@ export class GameComponent implements OnInit {
 
     while(i < quizSize) {
       songChoice = Math.floor(Math.random() * this.tracks.length + 1);
-      console.log(songChoice);
 
-      while(numsChosen.includes(songChoice) && this.tracks[songChoice].preview_url === null) {
+      while(numsChosen.includes(songChoice) || this.tracks[songChoice].preview_url === null || this.tracks[songChoice].preview_url === undefined) {
         songChoice =  Math.floor(Math.random() * this.tracks.length + 1);
       }
 
@@ -85,7 +87,40 @@ export class GameComponent implements OnInit {
       numsChosen.push(songChoice);
       i++;
     }
+  }
 
-    console.log(this.quizTracks);
+  checkGuess(guess: string, correctTrackName: string, correctArtistName: string) { 
+    if (correctTrackName.includes("-")) {
+      correctTrackName = correctTrackName.split(" - ")[0];
+    }
+
+    if (correctTrackName.includes("(")) {
+      correctTrackName = correctTrackName.split(" (")[0];
+    }
+
+    correctTrackName = correctTrackName.toLowerCase();
+    correctArtistName = correctArtistName.toLowerCase();
+    guess = guess.toLowerCase();
+
+    if (guess.length !== correctTrackName.length) {
+      this.guessGraded = true;
+      return;
+    }
+
+    let differences = 0;
+    for (let i = 0; i < guess.length; i++) {
+      if (guess[i] !== correctTrackName[i]) {
+        differences++;
+        if (differences > 3) {
+          this.guessGraded = true;
+          return;
+        }
+      }
+    }
+
+    this.correctGuess = true;
+    this.guessGraded = true;
+    
+    console.log("Guess: " + guess + ", Track Name: "+ correctTrackName + ", Artist Name: "+ correctArtistName);
   }
 }

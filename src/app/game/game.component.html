@@ -9,6 +9,17 @@
             <h3>{{song.name}}</h3>
             <h5>{{song.artists[0].name}}</h5>
             <audio controls [src]="song.preview_url"></audio>
+            <input type="text" [(ngModel)]="userGuess" placeholder="Make A Guess">
+            <button (click)="checkGuess(userGuess, song.name, song.artists[0].name)">Guess</button>
+
+            <div *ngIf="guessGraded">
+                <div *ngIf="correctGuess">
+                    <b>Correct!</b>
+                </div>
+                <div *ngIf="!correctGuess">
+                    <b>Incorrect!</b>
+                </div>
+            </div>
         </div>
     </div>
 </div>
