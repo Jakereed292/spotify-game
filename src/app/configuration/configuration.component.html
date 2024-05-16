@@ -1,0 +1,28 @@
+<h3 *ngIf="istextblank" style="color: red;">Must enter text to save or update user</h3>
+<label for ="name">Name: </label>
+<input id="name" [(ngModel)] ="user.name" (keyup)="onKey()" [value]="user.name" />
+<p>{{user.name}}</p>
+
+<br>
+
+<div >
+<input type="radio" id="Hip Hop" name="music" value="Hip Hop"  [(ngModel)] ="user.genre"/>
+<label for ="Hip Hop">Hip Hop</label>
+<input type="radio" id = "Country" name="music" value = "Country" [(ngModel)] ="user.genre"/>
+<label for ="Country">Country</label>
+<input type="radio" id="EDM" name="music" value = "EDM" [(ngModel)] ="user.genre"/>
+<label for ="EDM">EDM</label>
+
+<p>{{user.genre}}</p>
+
+<select [(ngModel)]="user.questions">
+    <option  [ngValue]="5">5</option>
+    <option  [ngValue]="10">10</option>
+    <option  [ngValue]="15">15</option>
+
+</select>
+<p>{{user.questions}}</p>
+<br>
+<br>
+<button [disabled]="istextblank" (click)="saveFunc()" >Save/Update </button>
+</div>
