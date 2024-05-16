@@ -20,6 +20,8 @@ export class GameComponent implements OnInit {
   userGuess: string = '';
   correctGuess: boolean = false;
   guessGraded: boolean = false;
+  songNum: number = 0;
+  userScore: number = 0;
 
   constructor(private authService: AuthService, 
               private spotifyService: SpotifyService) {}
@@ -87,12 +89,14 @@ export class GameComponent implements OnInit {
       numsChosen.push(songChoice);
       i++;
     }
+
+    if (this.quizTracks.length !== quizSize) {
+      this.quizTracks = [];
+      this.getRandomTracks(quizSize);
+    }
   }
 
   checkGuess(guess: string, correctTrackName: string, correctArtistName: string) { 
-    this.guessGraded = false;
-    this.correctGuess = false;
-
     if (correctTrackName.includes("-")) {
       correctTrackName = correctTrackName.split(" - ")[0];
     }
@@ -123,7 +127,13 @@ export class GameComponent implements OnInit {
 
     this.correctGuess = true;
     this.guessGraded = true;
+    this.userScore++;
+  }
 
-    console.log("Guess: " + guess + ", Track Name: "+ correctTrackName + ", Artist Name: "+ correctArtistName);
+  nextQuestion() {
+    this.songNum++;
+    this.guessGraded = false;
+    this.correctGuess = false;
+    this.userGuess = "";
   }
 }

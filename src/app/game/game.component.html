@@ -5,21 +5,34 @@
     <button (click)="searchGenre()">Search</button>
 
     <div *ngIf="quizTracks.length > 0">
-        <div *ngFor="let song of quizTracks">
-            <h3>{{song.name}}</h3>
-            <h5>{{song.artists[0].name}}</h5>
-            <audio controls [src]="song.preview_url"></audio>
-            <input type="text" [(ngModel)]="userGuess" placeholder="Make A Guess">
-            <button (click)="checkGuess(userGuess, song.name, song.artists[0].name)">Guess</button>
+        <div *ngIf="songNum >= 0 && songNum < quizTracks.length">
+            <h1>Question {{songNum + 1}}:</h1>
+            <audio controls [src]="quizTracks[songNum].preview_url"></audio>
+            <input type="text" [(ngModel)]="userGuess" placeholder="Guess Song Title">
+
+            <div *ngIf="!guessGraded">
+                <button (click)="checkGuess(userGuess, quizTracks[songNum].name, quizTracks[songNum].artists[0].name)">Guess</button>
+            </div>
 
             <div *ngIf="guessGraded">
                 <div *ngIf="correctGuess">
-                    <b>Correct!</b>
+                    <h1>Correct!</h1>
+                    <h3>{{quizTracks[songNum].name}}</h3>
+                    <h5>{{quizTracks[songNum].artists[0].name}}</h5>
                 </div>
                 <div *ngIf="!correctGuess">
-                    <b>Incorrect!</b>
+                    <h1>Incorrect!</h1>
+                    <h3>{{quizTracks[songNum].name}}</h3>
+                    <h5>{{quizTracks[songNum].artists[0].name}}</h5>
                 </div>
+
+                <button (click)="nextQuestion()">Next Question</button>
             </div>
+        </div>
+
+        <div *ngIf="songNum === quizTracks.length">
+            <h1>Quiz Complete!</h1>
+            <h3>Score: {{userScore}}</h3>
         </div>
     </div>
 </div>
