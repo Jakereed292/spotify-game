@@ -28,7 +28,7 @@ export class GameComponent implements OnInit {
 
 
   ngOnInit(): void {
-      
+    this.login();
   }
               
   login() {
@@ -62,7 +62,6 @@ export class GameComponent implements OnInit {
       (response: any) => {
         this.tracks = response.items;
         this.tracks = this.tracks.map((song: { track: any; }) => song.track);
-        console.log(this.tracks);
         this.getRandomTracks(this.quizSize);
       },
       (error) => {
@@ -81,14 +80,17 @@ export class GameComponent implements OnInit {
     while(i < quizSize) {
       songChoice = Math.floor(Math.random() * this.tracks.length + 1);
 
-      while(numsChosen.includes(songChoice) || this.tracks[songChoice].preview_url === null || this.tracks[songChoice].preview_url === undefined) {
+      while(numsChosen.includes(songChoice) || this.tracks[songChoice] === undefined || this.tracks[songChoice].preview_url === undefined || this.tracks[songChoice].preview_url === null) {
         songChoice =  Math.floor(Math.random() * this.tracks.length + 1);
+        
       }
 
       this.quizTracks.push(this.tracks[songChoice]);
       numsChosen.push(songChoice);
       i++;
     }
+
+    console.log(this.quizTracks);
 
     if (this.quizTracks.length !== quizSize) {
       this.quizTracks = [];

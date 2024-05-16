@@ -24,7 +24,6 @@ export class SpotifyService {
       'Authorization': 'Bearer ' + this.token
     });
 
-    console.log(this.searchUrl + '?q=' + genre + '&type=playlist&limit=1', { headers: headers })
     return this.http.get(this.searchUrl + '?q=:' + genre + '&type=playlist&limit=1', { headers: headers });
   }
 

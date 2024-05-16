@@ -1,4 +1,4 @@
-<button (click)="login()">Login to Spotify</button>
+<!--<button (click)="login()">Login to Spotify</button>-->
 <div *ngIf="authenticated">
     <input type="text" [(ngModel)]="genreQuery" placeholder="Enter genre">
     <input type="number" [(ngModel)]="quizSize" placeholder="Enter quiz size">
@@ -17,11 +17,13 @@
             <div *ngIf="guessGraded">
                 <div *ngIf="correctGuess">
                     <h1>Correct!</h1>
+                    <img [src]="quizTracks[songNum].album.images[0].url">
                     <h3>{{quizTracks[songNum].name}}</h3>
                     <h5>{{quizTracks[songNum].artists[0].name}}</h5>
                 </div>
                 <div *ngIf="!correctGuess">
                     <h1>Incorrect!</h1>
+                    <img [src]="quizTracks[songNum].album.images[0].url">
                     <h3>{{quizTracks[songNum].name}}</h3>
                     <h5>{{quizTracks[songNum].artists[0].name}}</h5>
                 </div>
