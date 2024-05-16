@@ -90,6 +90,9 @@ export class GameComponent implements OnInit {
   }
 
   checkGuess(guess: string, correctTrackName: string, correctArtistName: string) { 
+    this.guessGraded = false;
+    this.correctGuess = false;
+
     if (correctTrackName.includes("-")) {
       correctTrackName = correctTrackName.split(" - ")[0];
     }
@@ -120,7 +123,7 @@ export class GameComponent implements OnInit {
 
     this.correctGuess = true;
     this.guessGraded = true;
-    
+
     console.log("Guess: " + guess + ", Track Name: "+ correctTrackName + ", Artist Name: "+ correctArtistName);
   }
 }
