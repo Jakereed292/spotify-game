@@ -7,7 +7,10 @@
         <img [src]="topTrack.album.images[0]?.url" alt="Album Cover">
         <h3>{{ topTrack.name }}</h3>
         <p>{{ topTrack.artists[0].name }}</p>
-        <button (click)="play(topTrack)">Play</button>
+        <!--<h1>{{topTrack.preview_url}}</h1>-->
+        <audio controls>
+            <source [src]="topTrack.preview_url">
+        </audio>
     </div>
 </div>
 

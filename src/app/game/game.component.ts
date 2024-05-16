@@ -16,11 +16,11 @@ export class GameComponent implements OnInit {
   constructor(private authService: AuthService, 
               private spotifyService: SpotifyService) {}
 
-  ngOnInit(): void {
-    this.authService.handleAuthCallback();
-  }
 
-  /*
+  ngOnInit(): void {
+      
+  }
+              
   login() {
     this.authService.getToken().subscribe(
       (response: any) => {
@@ -33,17 +33,13 @@ export class GameComponent implements OnInit {
       }
     );
   }
-  */
-
-  login() {
-    this.authService.login();
-  }
 
   search() {
     this.spotifyService.searchSongs(this.searchQuery).subscribe(
       (response: any) => {
         this.searchResults = response.tracks.items;
         this.topTrack = response.tracks.items[0];
+        console.log(JSON.stringify(this.topTrack));
       },
       (error) => {
         console.error('Search failed:', error);
@@ -51,7 +47,4 @@ export class GameComponent implements OnInit {
     );
   }
 
-  play(track: any) {
-    this.spotifyService.playTrack(track.uri);
-  }
 }
