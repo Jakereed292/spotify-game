@@ -1,27 +1,30 @@
-<p>Genre</p>
-<select [(ngModel)]="selectedgenre" (change)="displayResults()">
+
+<div style="display: flex; align-items: center;">
+<label style="padding: 0px 4px 0px 8px;"  for ="genre">Genre: </label>
+<select id="genre" class="form-select form-select-sm" [(ngModel)]="selectedgenre" (change)="displayResults()">
     <option  value="Hip Hop" selected>Hip Hop</option>
     <option  value="Country">Country</option>
     <option  value="EDM">EDM</option>
 
 </select>
-{{selectedgenre}}
-<br>
-<p>Questions</p>
-<select [(ngModel)]="selectedquestion" (change)="displayResults()">
+
+
+<label style="padding: 0px 4px 0px 8px;" for ="question">Question: </label>
+<select id="question" class="form-select form-select-sm" [(ngModel)]="selectedquestion" (change)="displayResults()">
     <option  [ngValue]="5" selected>5</option>
     <option  [ngValue]="10">10</option>
     <option  [ngValue]="15">15</option>
 
 </select>
-<p>{{selectedquestion}}</p>
+</div>
+
 <br>
-<table>
+<table style="margin-left: 15%;" class="table table-dark table-sm">
 <tr>
-    <th>Place</th>
-    <th>Name</th>
-    <th>Score</th>
-    <th>Genre</th>
+    <th scope="col">Place</th>
+    <th scope="col">Name</th>
+    <th scope="col">Score</th>
+    <th scope="col">Genre</th>
 </tr>
 <tr *ngFor = "let result of resultarray; index as i">
     <td>{{i+1}}</td>

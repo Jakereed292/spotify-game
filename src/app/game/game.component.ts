@@ -33,6 +33,7 @@ export class GameComponent implements OnInit {
   quizCompleted: boolean = false;
   currentUser!: Config;
   resultarray:Config[] = [];
+  disablestartbutton=false;
 
   constructor(private authService: AuthService, 
               private spotifyService: SpotifyService) {}
@@ -62,6 +63,7 @@ export class GameComponent implements OnInit {
   }
 
   searchGenre() {
+    this.disablestartbutton=true;
     this.spotifyService.getSongsByGenre(this.genreQuery).subscribe(
       (response: any) => {
         this.genreResults = response.playlists.items;
