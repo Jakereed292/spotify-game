@@ -10,7 +10,6 @@ import { Config } from '../config';
 })
 export class GameComponent implements OnInit {
   authenticated = false;
-  searchResults: any[] = [];
   genreResults: any[] = [];
   genreQuery: string = '';
   playlist: any;
@@ -20,6 +19,14 @@ export class GameComponent implements OnInit {
   quizTracks: any[] = [];
   userGuess: string = '';
   correctGuess: boolean = false;
+
+  correctTrack: boolean = false;
+  correctArtist: boolean = false;
+
+  trackGuess: boolean = false;
+  artistGuess: boolean = false;
+  guessCounter: number = 0;
+
   guessGraded: boolean = false;
   songNum: number = 0;
   userScore: number = 0;
@@ -117,12 +124,19 @@ export class GameComponent implements OnInit {
       correctTrackName = correctTrackName.split(" (")[0];
     }
 
+    this.checkTrackGuess(guess,correctTrackName);
+    this.checkArtistGuess(guess, correctArtistName);
+
+    this.guessCounter++;
+  }
+
+
+  checkTrackGuess(guess: string, correctTrackName: string) {
     correctTrackName = correctTrackName.toLowerCase();
-    correctArtistName = correctArtistName.toLowerCase();
     guess = guess.toLowerCase();
 
     if (guess.length !== correctTrackName.length) {
-      this.guessGraded = true;
+      this.trackGuess = true;
       return;
     }
 
@@ -131,27 +145,53 @@ export class GameComponent implements OnInit {
       if (guess[i] !== correctTrackName[i]) {
         differences++;
         if (differences > 3) {
-          this.guessGraded = true;
+          this.trackGuess = true;
           return;
         }
       }
     }
 
-    this.correctGuess = true;
-    this.guessGraded = true;
-    this.userScore++;
+    this.correctTrack = true;
+    this.trackGuess = true;
+  }
+
+  checkArtistGuess(guess: string, correctArtistName: string) {
+    correctArtistName = correctArtistName.toLowerCase();
+    guess = guess.toLowerCase();
+
+    if (guess.length !== correctArtistName.length) {
+      this.artistGuess = true;
+      return;
+    }
+
+    let differences = 0;
+    for (let i = 0; i < guess.length; i++) {
+      if (guess[i] !== correctArtistName[i]) {
+        differences++;
+        if (differences > 3) {
+          this.artistGuess = true;
+          return;
+        }
+      }
+    }
+
+    this.correctArtist = true;
+    this.artistGuess = true;
   }
 
   nextQuestion() {
     this.songNum++;
-    this.guessGraded = false;
-    this.correctGuess = false;
+    this.guessCounter = 0;
+    this.trackGuess = false;
+    this.artistGuess = false;
+    this.correctTrack = false;
+    this.correctArtist = false;
     this.userGuess = "";
 
     if (this.songNum === this.quizTracks.length) {
       this.quizCompleted = true;
       this.currentUser.score = this.userScore;
-      //
+      
       if(JSON.parse(localStorage.getItem('resultarray') as string) === null)
         {
           this.resultarray.push(this.currentUser);
