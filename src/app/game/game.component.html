@@ -1,6 +1,6 @@
 <div style="display: flex; align-items: center;justify-content: center;">
 <div *ngIf="authenticated">
-    <button *ngIf ="!disablestartbutton" (click)="searchGenre()">Start Quiz</button>
+    <button style="margin-top: 3px;" class="btn btn-primary" *ngIf ="!disablestartbutton" (click)="searchGenre()">Start Quiz</button>
 
     <div *ngIf="quizTracks.length > 0">
         <div *ngIf="songNum >= 0 && songNum < quizTracks.length">
@@ -9,7 +9,7 @@
             <input style="position: relative;top: 75vh;right: 22vh;" type="text" [(ngModel)]="userGuess" placeholder="Guess Song Title">
 
             <div *ngIf="!guessGraded">
-                <button style="position: relative;top: 70vh;left: 4vh;" (click)="checkGuess(userGuess, quizTracks[songNum].name, quizTracks[songNum].artists[0].name)">Guess</button>
+                <button class="btn btn-primary" style="position: relative;top: 70vh;left: 4vh;" (click)="checkGuess(userGuess, quizTracks[songNum].name, quizTracks[songNum].artists[0].name)">Guess</button>
             </div>
 
             <div *ngIf="guessGraded">
@@ -26,7 +26,7 @@
                     <h5>{{quizTracks[songNum].artists[0].name}}</h5>
                 </div>
 
-                <button style="position: relative;top: 13vh;" (click)="nextQuestion()">Next Question</button>
+                <button class="btn btn-primary" style="position: relative;top: 13vh;" (click)="nextQuestion()">Next Question</button>
             </div>
         </div>
 
