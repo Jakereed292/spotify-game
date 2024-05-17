@@ -17,8 +17,8 @@ export class GameComponent implements OnInit {
   numOfTracks: number = 0;
   quizSize: number = 0;
   quizTracks: any[] = [];
+  reloaded: boolean = false;
   userGuess: string = '';
-  correctGuess: boolean = false;
 
   correctTrack: boolean = false;
   correctArtist: boolean = false;
@@ -50,11 +50,10 @@ export class GameComponent implements OnInit {
         const token = response.access_token;
         localStorage.setItem('access_token', token);
         this.authenticated = true;
-
         this.currentUser = JSON.parse(localStorage.getItem('user') as string);
-
         this.genreQuery = this.currentUser.genre;
         this.quizSize = this.currentUser.questions;
+
         console.log(this.genreQuery);
       },
       (error) => {
@@ -64,6 +63,17 @@ export class GameComponent implements OnInit {
   }
 
   searchGenre() {
+    const reloadFlag = sessionStorage.getItem('reloaded');
+
+    if (!reloadFlag) {
+      sessionStorage.setItem('reloaded', 'true');
+      this.reloaded = true;
+      location.reload();
+    }
+    else {
+      sessionStorage.removeItem('reloaded');
+    }
+
     this.disablestartbutton=true;
     this.spotifyService.getSongsByGenre(this.genreQuery).subscribe(
       (response: any) => {
@@ -208,7 +218,7 @@ export class GameComponent implements OnInit {
     this.artistGuess = false;
     this.correctTrack = false;
     this.correctArtist = false;
-    this.userGuess = "";
+    this.userGuess = '';
 
     if (this.songNum === this.quizTracks.length) {
       this.quizCompleted = true;
