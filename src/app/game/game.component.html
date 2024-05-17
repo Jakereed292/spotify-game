@@ -6,8 +6,8 @@
         <div *ngIf="songNum >= 0 && songNum < quizTracks.length">
             <h1>Question {{songNum + 1}}:</h1>
             
-            <input type="text" [(ngModel)]="userGuess" placeholder="Guess Song Title or Artist">
-            <audio controls [src]="quizTracks[songNum].preview_url"></audio>
+            <input class="form-control" type="text" [(ngModel)]="userGuess" placeholder="Guess Song Title or Artist">
+            <audio style="position: relative;top: 3px;" controls [src]="quizTracks[songNum].preview_url"></audio>
 
             <div *ngIf="trackGuess">
                 <div *ngIf="correctTrack">
@@ -36,11 +36,11 @@
 
                 <h3>+ {{calculatePoints()}} points</h3>
 
-                <button (click)="nextQuestion()">Next Question</button>
+                <button class="btn btn-primary" (click)="nextQuestion()">Next Question</button>
             </div>
 
             <div *ngIf="guessCounter !== 2">
-                <button (click)="checkGuess(userGuess, quizTracks[songNum].name, quizTracks[songNum].artists[0].name)">Guess</button>
+                <button class="btn btn-primary" (click)="checkGuess(userGuess, quizTracks[songNum].name, quizTracks[songNum].artists[0].name)">Guess</button>
             </div>
         </div>
 
