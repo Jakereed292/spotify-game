@@ -3,7 +3,7 @@
 
 <label class="form-label" style="margin-top: 15%;" for ="name">Name: </label>
 <input style="width: 48%;" class="form-control" id="name" [(ngModel)] ="user.name" (keyup)="onKey()" [value]="user.name" />
-<p>{{user.name}}</p>
+
 
 <br>
 
@@ -34,15 +34,15 @@
 <label style="padding:0px 5px 0px 5px;" class="form-check-label" for ="Indie/Alternative">Indie/Alternative</label>
 
 
-<p>{{user.genre}}</p>
-
+<br>
+<br>
 <select class="form-select form-select-sm" style="width: 48%;" [(ngModel)]="user.questions">
     <option  [ngValue]="5">5</option>
     <option  [ngValue]="10">10</option>
     <option  [ngValue]="15">15</option>
 
 </select>
-<p>{{user.questions}}</p>
+
 <br>
 <br>
 <button class="btn btn-primary" [disabled]="istextblank" (click)="saveFunc()" >Save/Update </button>

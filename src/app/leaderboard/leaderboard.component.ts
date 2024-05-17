@@ -43,49 +43,56 @@ export class LeaderboardComponent implements OnInit {
   if(this.selectedgenre==="Hip Hop" && this.selectedquestion===5)
     {
       this.resultarray=this.userarray.filter((user)=>{return user.questions===5 && user.genre==="Hip Hop"});
+       this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
     }
   
   if(this.selectedgenre==="Hip Hop" && this.selectedquestion===10)
     {
-      console.log("In displayResults(): in Hip Hop && selectedquestion=10 block")
-      console.log("In displayResults(): in Hip Hop && selectedquestion=10 block array: "+JSON.stringify(this.resultarray))
       this.resultarray=this.userarray.filter((user)=>{return user.questions===10 && user.genre==="Hip Hop"});
+      this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
     }
 
   if(this.selectedgenre==="Hip Hop" && this.selectedquestion===15)
     {
       this.resultarray=this.userarray.filter((user)=>{return user.questions===15 && user.genre==="Hip Hop"});
+      this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
     }
 
 
   if(this.selectedgenre==="Country" && this.selectedquestion===5)
     {
       this.resultarray=this.userarray.filter((user)=>{return user.questions===5 && user.genre==="Country"});
+      this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
     }
   
   if(this.selectedgenre==="Country" && this.selectedquestion===10)
     {
       this.resultarray=this.userarray.filter((user)=>{return user.questions===10 && user.genre==="Country"});
+      this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
     }
 
   if(this.selectedgenre==="Country" && this.selectedquestion===15)
     {
       this.resultarray=this.userarray.filter((user)=>{return user.questions===15 && user.genre==="Country"});
+      this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
     }
 
   if(this.selectedgenre==="EDM" && this.selectedquestion===5)
     {
       this.resultarray=this.userarray.filter((user)=>{return user.questions===5 && user.genre==="EDM"});
+      this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
     }
   
   if(this.selectedgenre==="EDM" && this.selectedquestion===10)
     {
       this.resultarray=this.userarray.filter((user)=>{return user.questions===10 && user.genre==="EDM"});
+      this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
     }
 
   if(this.selectedgenre==="EDM" && this.selectedquestion===15)
     {
       this.resultarray=this.userarray.filter((user)=>{return user.questions===15 && user.genre==="EDM"});
+      this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
     }
 
   
