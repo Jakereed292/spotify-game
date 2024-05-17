@@ -1,6 +1,6 @@
 <div style="display: flex; align-items: center;justify-content: center;">
 <div *ngIf="authenticated">
-    <button *ngIf ="!disablestartbutton" (click)="searchGenre()">Start Quiz</button>
+    <button style="margin-top: 3px;" class="btn btn-primary" *ngIf ="!disablestartbutton" (click)="searchGenre()">Start Quiz</button>
 
     <div *ngIf="quizTracks.length > 0">
         <div *ngIf="songNum >= 0 && songNum < quizTracks.length">
