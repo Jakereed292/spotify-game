@@ -25,6 +25,7 @@ export class GameComponent implements OnInit {
   userScore: number = 0;
   quizCompleted: boolean = false;
   currentUser!: Config;
+  resultarray:Config[] = [];
 
   constructor(private authService: AuthService, 
               private spotifyService: SpotifyService) {}
@@ -150,6 +151,19 @@ export class GameComponent implements OnInit {
     if (this.songNum === this.quizTracks.length) {
       this.quizCompleted = true;
       this.currentUser.score = this.userScore;
+      //
+      if(JSON.parse(localStorage.getItem('resultarray') as string) === null)
+        {
+          this.resultarray.push(this.currentUser);
+          localStorage.setItem("resultarray",JSON.stringify(this.resultarray));
+
+        }
+        else
+        {
+          this.resultarray = JSON.parse(localStorage.getItem('resultarray') as string);
+          this.resultarray.push(this.currentUser);
+          localStorage.setItem("resultarray",JSON.stringify(this.resultarray));
+        }
 
     }
   }

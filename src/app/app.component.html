@@ -1,9 +1,14 @@
-<div class="navbar">
-    <a routerLink="/">Configuration</a>
+
+<nav class="navbar navbar-dark bg-dark" >
+    <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Configuration</a>
     <br>
-    <a routerLink="/game">Game</a>
+    <a class="navbar-brand" routerLink="/game">Game</a>
     <br>
-    <a routerLink="/leaderboard">Leaderboard</a>
+    <a class="navbar-brand" routerLink="/leaderboard">Leaderboard</a>
 </div>
+</nav>
+<div id="background">
 <router-outlet></router-outlet>
+</div>
 <!--<app-game></app-game>-->
