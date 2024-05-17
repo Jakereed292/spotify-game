@@ -26,6 +26,7 @@ export class GameComponent implements OnInit {
   trackGuess: boolean = false;
   artistGuess: boolean = false;
   guessCounter: number = 0;
+  roundPoints: number = 0;
 
   guessGraded: boolean = false;
   songNum: number = 0;
@@ -181,8 +182,27 @@ export class GameComponent implements OnInit {
     this.artistGuess = true;
   }
 
+  calculatePoints() {
+    if (this.correctArtist && this.correctTrack) {
+      return 5;
+    }
+    else if (this.correctArtist) {
+      return 1;
+    }
+    else if (this.correctTrack) {
+      return 2;
+    }
+    else {
+      return 0;
+    }
+  }
+
   nextQuestion() {
+    this.roundPoints = this.calculatePoints();
+    this.userScore += this.roundPoints;
+
     this.songNum++;
+    this.roundPoints - 0;
     this.guessCounter = 0;
     this.trackGuess = false;
     this.artistGuess = false;

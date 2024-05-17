@@ -34,6 +34,8 @@
                 <h3>{{quizTracks[songNum].name}}</h3>
                 <h5>{{quizTracks[songNum].artists[0].name}}</h5>
 
+                <h3>+ {{calculatePoints()}} points</h3>
+
                 <button (click)="nextQuestion()">Next Question</button>
             </div>
 
