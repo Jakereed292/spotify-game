@@ -95,10 +95,146 @@ export class LeaderboardComponent implements OnInit {
       this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
     }
 
-  
 
+    if(this.selectedgenre==="R&B" && this.selectedquestion===5)
+      {
+        this.resultarray=this.userarray.filter((user)=>{return user.questions===5 && user.genre==="R&B"});
+        this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+      }
     
+    if(this.selectedgenre==="R&B" && this.selectedquestion===10)
+      {
+        this.resultarray=this.userarray.filter((user)=>{return user.questions===10 && user.genre==="R&B"});
+        this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+      }
   
+    if(this.selectedgenre==="R&B" && this.selectedquestion===15)
+      {
+        this.resultarray=this.userarray.filter((user)=>{return user.questions===15 && user.genre==="R&B"});
+        this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+      }
+
+  
+      
+
+      if(this.selectedgenre==="Pop" && this.selectedquestion===5)
+        {
+          this.resultarray=this.userarray.filter((user)=>{return user.questions===5 && user.genre==="Pop"});
+          this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+        }
+      
+      if(this.selectedgenre==="Pop" && this.selectedquestion===10)
+        {
+          this.resultarray=this.userarray.filter((user)=>{return user.questions===10 && user.genre==="Pop"});
+          this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+        }
+    
+      if(this.selectedgenre==="Pop" && this.selectedquestion===15)
+        {
+          this.resultarray=this.userarray.filter((user)=>{return user.questions===15 && user.genre==="Pop"});
+          this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+        }
+
+
+
+
+        if(this.selectedgenre==="Rock" && this.selectedquestion===5)
+          {
+            this.resultarray=this.userarray.filter((user)=>{return user.questions===5 && user.genre==="Rock"});
+            this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+          }
+        
+        if(this.selectedgenre==="Rock" && this.selectedquestion===10)
+          {
+            this.resultarray=this.userarray.filter((user)=>{return user.questions===10 && user.genre==="Rock"});
+            this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+          }
+      
+        if(this.selectedgenre==="Rock" && this.selectedquestion===15)
+          {
+            this.resultarray=this.userarray.filter((user)=>{return user.questions===15 && user.genre==="Rock"});
+            this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+          }
+
+
+
+
+          if(this.selectedgenre==="Latin" && this.selectedquestion===5)
+            {
+              this.resultarray=this.userarray.filter((user)=>{return user.questions===5 && user.genre==="Latin"});
+              this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+            }
+          
+          if(this.selectedgenre==="Latin" && this.selectedquestion===10)
+            {
+              this.resultarray=this.userarray.filter((user)=>{return user.questions===10 && user.genre==="Latin"});
+              this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+            }
+        
+          if(this.selectedgenre==="Latin" && this.selectedquestion===15)
+            {
+              this.resultarray=this.userarray.filter((user)=>{return user.questions===15 && user.genre==="Latin"});
+              this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+            }
+
+
+            if(this.selectedgenre==="K-Pop" && this.selectedquestion===5)
+              {
+                this.resultarray=this.userarray.filter((user)=>{return user.questions===5 && user.genre==="K-Pop"});
+                this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+              }
+            
+            if(this.selectedgenre==="K-Pop" && this.selectedquestion===10)
+              {
+                this.resultarray=this.userarray.filter((user)=>{return user.questions===10 && user.genre==="K-Pop"});
+                this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+              }
+          
+            if(this.selectedgenre==="K-Pop" && this.selectedquestion===15)
+              {
+                this.resultarray=this.userarray.filter((user)=>{return user.questions===15 && user.genre==="K-Pop"});
+                this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+              }
+    
+          
+              if(this.selectedgenre==="Jazz" && this.selectedquestion===5)
+                {
+                  this.resultarray=this.userarray.filter((user)=>{return user.questions===5 && user.genre==="Jazz"});
+                  this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+                }
+              
+              if(this.selectedgenre==="Jazz" && this.selectedquestion===10)
+                {
+                  this.resultarray=this.userarray.filter((user)=>{return user.questions===10 && user.genre==="Jazz"});
+                  this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+                }
+            
+              if(this.selectedgenre==="Jazz" && this.selectedquestion===15)
+                {
+                  this.resultarray=this.userarray.filter((user)=>{return user.questions===15 && user.genre==="Jazz"});
+                  this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+                }
+
+
+
+                if(this.selectedgenre==="Indie/Alternative" && this.selectedquestion===5)
+                  {
+                    this.resultarray=this.userarray.filter((user)=>{return user.questions===5 && user.genre==="Indie/Alternative"});
+                    this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+                  }
+                
+                if(this.selectedgenre==="Indie/Alternative" && this.selectedquestion===10)
+                  {
+                    this.resultarray=this.userarray.filter((user)=>{return user.questions===10 && user.genre==="Indie/Alternative"});
+                    this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+                  }
+              
+                if(this.selectedgenre==="Indie/Alternative" && this.selectedquestion===15)
+                  {
+                    this.resultarray=this.userarray.filter((user)=>{return user.questions===15 && user.genre==="Indie/Alternative"});
+                    this.resultarray.sort((user1,user2)=>(user2.score-user1.score))
+                  }
+          
  }
   
 
