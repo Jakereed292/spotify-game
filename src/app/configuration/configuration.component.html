@@ -1,21 +1,42 @@
+<div style="margin-left: 30%;">
 <h3 *ngIf="istextblank" style="color: red;">Must enter text to save or update user</h3>
-<label for ="name">Name: </label>
-<input id="name" [(ngModel)] ="user.name" (keyup)="onKey()" [value]="user.name" />
+
+<label class="form-label" style="margin-top: 15%;" for ="name">Name: </label>
+<input style="width: 48%;" class="form-control" id="name" [(ngModel)] ="user.name" (keyup)="onKey()" [value]="user.name" />
 <p>{{user.name}}</p>
 
 <br>
 
 <div >
-<input type="radio" id="Hip Hop" name="music" value="Hip Hop"  [(ngModel)] ="user.genre"/>
-<label for ="Hip Hop">Hip Hop</label>
-<input type="radio" id = "Country" name="music" value = "Country" [(ngModel)] ="user.genre"/>
-<label for ="Country">Country</label>
-<input type="radio" id="EDM" name="music" value = "EDM" [(ngModel)] ="user.genre"/>
-<label for ="EDM">EDM</label>
+<input class="form-check-input" type="radio" id="Hip Hop" name="music" value="Hip Hop"  [(ngModel)] ="user.genre"/>
+<label style="padding:0px 5px 0px 5px;" class="form-check-label" for ="Hip Hop">Hip Hop</label>
+<input class="form-check-input" type="radio" id = "Country" name="music" value = "Country" [(ngModel)] ="user.genre"/>
+<label style="padding:0px 5px 0px 5px;" class="form-check-label" for ="Country">Country</label>
+<input class="form-check-input" type="radio" id="EDM" name="music" value = "EDM" [(ngModel)] ="user.genre"/>
+<label style="padding:0px 5px 0px 5px;" class="form-check-label" for ="EDM">EDM</label>
+
+<input class="form-check-input" type="radio" id="Rock" name="music" value="Rock"  [(ngModel)] ="user.genre"/>
+<label style="padding:0px 5px 0px 5px;" class="form-check-label" for ="Rock">Rock</label>
+<input class="form-check-input" type="radio" id = "R&B" name="music" value = "R&B" [(ngModel)] ="user.genre"/>
+<label style="padding:0px 5px 0px 5px;" class="form-check-label" for ="R&B">R&B</label>
+<input class="form-check-input" type="radio" id="Latin" name="music" value = "Latin" [(ngModel)] ="user.genre"/>
+<label style="padding:0px 5px 0px 5px;" class="form-check-label" for ="Latin">Latin</label>
+
+<input class="form-check-input" type="radio" id="K-Pop" name="music" value="K-Pop"  [(ngModel)] ="user.genre"/>
+<label style="padding:0px 5px 0px 5px;" class="form-check-label" for ="K-Pop">K-Pop</label>
+<input class="form-check-input" type="radio" id = "Jazz" name="music" value = "Jazz" [(ngModel)] ="user.genre"/>
+<label style="padding:0px 5px 0px 5px;" class="form-check-label" for ="Jazz">Jazz</label>
+<input class="form-check-input" type="radio" id="Pop" name="music" value = "Pop" [(ngModel)] ="user.genre"/>
+<label style="padding:0px 5px 0px 5px;" class="form-check-label" for ="Pop">Pop</label>
+
+
+<input class="form-check-input" type="radio" id="Indie/Alternative" name="music" value="Indie/Alternative"  [(ngModel)] ="user.genre"/>
+<label style="padding:0px 5px 0px 5px;" class="form-check-label" for ="Indie/Alternative">Indie/Alternative</label>
+
 
 <p>{{user.genre}}</p>
 
-<select [(ngModel)]="user.questions">
+<select class="form-select form-select-sm" style="width: 48%;" [(ngModel)]="user.questions">
     <option  [ngValue]="5">5</option>
     <option  [ngValue]="10">10</option>
     <option  [ngValue]="15">15</option>
@@ -24,5 +45,6 @@
 <p>{{user.questions}}</p>
 <br>
 <br>
-<button [disabled]="istextblank" (click)="saveFunc()" >Save/Update </button>
+<button class="btn btn-primary" [disabled]="istextblank" (click)="saveFunc()" >Save/Update </button>
+</div>
 </div>

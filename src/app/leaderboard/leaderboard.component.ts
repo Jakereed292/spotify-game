@@ -13,16 +13,10 @@ export class LeaderboardComponent implements OnInit {
   selectedgenre: string='Hip Hop'
   selectedquestion: number=5
 
-  fortesting:Config[] = [{name:"Bob",genre:"Country",questions:10,score:15},{name:"Bobby",genre:"Hip Hop",questions:10,score:20},{name:"Ricky",genre:"Hip Hop",questions:10,score:5}, {name:"Jimmy",genre:"Hip Hop",questions:5,score:50}]
+
   constructor() { }
 
   ngOnInit(): void {
-    localStorage.setItem("resultarray",JSON.stringify(this.fortesting));
-    // let a:Config[] = JSON.parse(localStorage.getItem('resultarray') as string);
-    // if(a!==null)
-    //  {
-    //   this.userarray = a;
-    //  }
      this.displayResults();
   }
 
@@ -31,7 +25,7 @@ export class LeaderboardComponent implements OnInit {
  displayResults()
  {
   console.log("In displayResults()")
-  //Migt be redundant
+  
   let a:Config[] = JSON.parse(localStorage.getItem('resultarray') as string);
   console.log("In displayResults() array: "+JSON.stringify(a));
   if(a!==null)
@@ -41,7 +35,7 @@ export class LeaderboardComponent implements OnInit {
    }
    else
     this.userarray=[];
-  //
+  
   console.log("In displayResults(): CHecking selgenre: ", this.selectedgenre ==="Hip Hop")
   console.log("In displayResults(): CHecking selques: ", this.selectedquestion===10)
   console.log("In displayResults(): CHecking Both Statements: ", this.selectedgenre==="Hip Hop" && this.selectedquestion===10)
